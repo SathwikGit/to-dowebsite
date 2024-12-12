@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sathwik's Website</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <input placeholder="Write your To-do here" />
+    <button onclick="Addtodo()">Add you next Div</button>
+  </body>
+
+  <script>
+    let count = 1;
+    function deletetodo(id) {
+      console.log(id);
+      let delelem = document.getElementById("div" + id);
+      delelem.parentNode.removeChild(delelem);
+    }
+
+    function Addtodo() {
+      const in1 = document.querySelector("input");
+      let val = in1.value;
+
+      let elem = document.createElement("div");
+      elem.id = "div" + count;
+
+      let headin = document.createElement("h4");
+      headin.innerHTML = count + ". " + val;
+
+      let newbutton = document.createElement("button");
+      newbutton.innerHTML = "delete";
+      newbutton.setAttribute("onclick", "deletetodo(" + count + ")");
+
+      elem.appendChild(headin);
+      elem.appendChild(newbutton);
+
+      const par = document.querySelector("body");
+      par.appendChild(elem);
+      count = count + 1;
+    }
+  </script>
+</html>
