@@ -14,10 +14,28 @@
 
   <script>
     let count = 1;
+    function changetodo() {
+      let x = 1;
+      let st = document.querySelectorAll("div");
+      console.log(st);
+      console.log("hi");
+
+      for (let k of st) {
+        k.id = "div" + x;
+        let hd4 = k.querySelector("h4");
+        let content = hd4.innerHTML.split(". ")[1];
+        hd4.innerHTML = x + ". " + content;
+        let dbutton = k.querySelector("button");
+        dbutton.setAttribute("onclick", "deletetodo(" + x + ")");
+        x++;
+      }
+      return x;
+    }
     function deletetodo(id) {
-      console.log(id);
       let delelem = document.getElementById("div" + id);
       delelem.parentNode.removeChild(delelem);
+
+      count = changetodo();
     }
 
     function Addtodo() {
